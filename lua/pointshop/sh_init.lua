@@ -100,6 +100,7 @@ function PS:LoadItems()
 					ITEM.AllowedUserGroups = {} -- this will fail the #ITEM.AllowedUserGroups test and continue
 					ITEM.SingleUse = false
 					ITEM.NoPreview = false
+					ITEM.Type = -1
 					
 					ITEM.CanPlayerBuy = true
 					ITEM.CanPlayerSell = true
