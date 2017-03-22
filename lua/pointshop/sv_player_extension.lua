@@ -335,11 +335,18 @@ function Player:PS_EquipItem(item_id)
 	end
 
 	local cat_name = ITEM.Category
+	local item_type = ITEM.Type
 	local CATEGORY = PS:FindCategoryByName(cat_name)
 
 	if CATEGORY and CATEGORY.AllowedEquipped > -1 then
 		if self:PS_NumItemsEquippedFromCategory(cat_name) + 1 > CATEGORY.AllowedEquipped then
 			self:PS_Notify('Only ' .. CATEGORY.AllowedEquipped .. ' item' .. (CATEGORY.AllowedEquipped == 1 and '' or 's') .. ' can be equipped from this category!')
+			return false
+		end
+	end
+	if ITEM and ITEM.Type > -1 then
+		if self:PS_NumItemsEquippedFromItemTYPE(item_type) + 1 > ITEM.Type then
+			self:PS_Notify('Only 1 of this item can be equipped!')
 			return false
 		end
 	end
