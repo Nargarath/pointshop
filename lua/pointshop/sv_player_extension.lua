@@ -314,6 +314,19 @@ function Player:PS_NumItemsEquippedFromCategory(cat_name)
 	return count
 end
 
+function Player:PS_NumItemsEquippedFromItemTYPE(item_type)
+	local count = 0
+
+	for item_id, item in pairs(self.PS_Items) do
+		local ITEM = PS.Items[item_id]
+		if ITEM.Type == item_type and item.Equipped then
+			count = count + 1
+		end
+	end
+
+	return count
+end
+
 -- equip/hoster items
 
 function Player:PS_EquipItem(item_id)
